@@ -18,8 +18,17 @@ module.exports = NodeHelper.create({
     if (notification == "SEND_ANDROID") {
 	 var self = this;
 
-	 fs.readFile(path.resolve(global.root_path + payload), 'utf8', function(err, data) {
-			 self.sendSocketNotification("GET_QUERY", data);
+	 fs.readFile(path.resolve(global.root_path + payload + "mmsQuery.js"), 'utf8', function(err, data) {
+		 self.sendSocketNotification("GET_MMS_QUERY", data);
+	 });
+	 fs.readFile(path.resolve(global.root_path + payload + "kakaoQuery.js"), 'utf8', function(err, data) {
+		 self.sendSocketNotification("GET_KAKAO_QUERY", data);
+	 });
+	 fs.readFile(path.resolve(global.root_path + payload + "gmailQuery.js"), 'utf8', function(err, data) {
+		 self.sendSocketNotification("GET_GMAIL_QUERY", data);
+	 });
+	 fs.readFile(path.resolve(global.root_path + payload + "callQuery.js"), 'utf8', function(err, data) {
+		 self.sendSocketNotification("GET_CALL_QUERY", data);
 	 });
     }
   },
