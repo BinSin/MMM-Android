@@ -12,7 +12,7 @@ Module.register("MMM-Android", {
 	 var self = this;
 	 Log.log("Starting module: " + this.name);
 	 setInterval(function() {
-		self.sendSocketNotification("SEND_ANDROID", self.query);
+		self.sendSocketNotification("SEND_ANDROID", self.config.query);
 	 }, 2000);
 
   },
