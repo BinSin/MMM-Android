@@ -17,9 +17,10 @@ module.exports = NodeHelper.create({
   socketNotificationReceived: function(notification, payload) {
     if (notification == "SEND_ANDROID") {
 	 var self = this;
-	 var query = fs.readFileSync(path.resolve(global.root_path + "/android/notiQuery.js"), {encoding: "utf8"});
 
-   	 self.sendSocketNotification("GET_QUERY", query);
+	 fs.readFile(path.resolve(global.root_path + "/android/notiQuery.js"), 'utf8', function(err, data) {
+			 self.sendSocketNotification("GET_QUERY", data);
+	 });
     }
   },
 

@@ -5,7 +5,7 @@
 
 Module.register("MMM-Android", {
   defaults: {
-	 query: "~/MagicMirror/android/notiQuery.js",
+	 query: "/android/notiQuery.js",
   },
 
   start: function() {
@@ -13,11 +13,12 @@ Module.register("MMM-Android", {
 	 Log.log("Starting module: " + this.name);
 	 setInterval(function() {
 		self.sendSocketNotification("SEND_ANDROID", self.query);
-	 	self.updateDom();
-	 }, 3000);
+	 }, 2000);
+
   },
 
   getDom: function() {
+ 	 var self = this;
 
 	 var wrapper = document.createElement("div");
 
@@ -26,13 +27,20 @@ Module.register("MMM-Android", {
 	 var gmail = document.createElement("div");
 	 var call = document.createElement("div");
 
+	 var kakao_tr = document.createElement("tr");
+	 var kakao_td = document.createElement("td");
+
+
 	 mms.className = "mms";
 	 kakao.className = "kakao";
 	 gmail.className = "gmail";
 	 call.className = "call";
+	 
+	 kakao_td.innerHTML = self.query;
 
-	 kakao.innerHTML = self.query;
-
+	 kakao_tr.appendChild(kakao_td);
+	 kakao.appendChild(kakao_tr);
+	 
 	 wrapper.appendChild(kakao);
 
 	 return wrapper;
@@ -44,6 +52,7 @@ Module.register("MMM-Android", {
 	   if(notification == "GET_QUERY") {
 		   console.log("noti query : " + payload);
 		   self.query = payload;
+		   self.updateDom();
 	   }
    },
    
