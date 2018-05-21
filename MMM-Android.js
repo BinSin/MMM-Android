@@ -15,6 +15,7 @@ Module.register("MMM-Android", {
 	 self.query.mms = "";
 	 self.query.kakao = "";
 	 self.query.gmail = "";
+
 	 self.query.call = "";
 	 */
 	 setInterval(function() {
@@ -28,10 +29,8 @@ Module.register("MMM-Android", {
 
 	 var wrapper = document.createElement("div");
 
-	 var mms = document.createElement("div");
-	 var kakao = document.createElement("div");
-	 var gmail = document.createElement("div");
-	 var call = document.createElement("div");
+	 var table = document.createElement("table");
+	 table.innerHTML = "<table border=1>";
 
 	 var mms_package = document.createElement("tr");
 	 var mms_title = document.createElement("td");
@@ -49,10 +48,7 @@ Module.register("MMM-Android", {
 	 var call_title = document.createElement("td");
 	 var call_text = document.createElement("td");
 	 
-	 mms.className = "mms";
-	 kakao.className = "kakao";
-	 gmail.className = "gmail";
-	 call.className = "call";
+	 table.className= "table";
 
 	 var strMms = new String(self.mms).split('&');
 	 var strKakao = new String(self.kakao).split('&');
@@ -77,25 +73,23 @@ Module.register("MMM-Android", {
 
 	 mms_package.appendChild(mms_title); 
 	 mms_package.appendChild(mms_text);
-	 mms.appendChild(mms_package);
 
 	 kakao_package.appendChild(kakao_title); 
 	 kakao_package.appendChild(kakao_text); 
-	 kakao.appendChild(kakao_package);
 
 	 gmail_package.appendChild(gmail_title); 
 	 gmail_package.appendChild(gmail_text); 
-	 gmail.appendChild(gmail_package);
 
 	 call_package.appendChild(call_title); 
 	 call_package.appendChild(call_text);
-	 call.appendChild(call_package);
 
-	 wrapper.appendChild(mms);
-	 wrapper.appendChild(kakao);
-	 wrapper.appendChild(gmail);
-	 wrapper.appendChild(call);
-	 
+	 table.appendChild(mms_package);
+	 table.appendChild(kakao_package);
+	 table.appendChild(gmail_package);
+	 table.appendChild(call_package);
+
+	 wrapper.appendChild(table);
+
 	 return wrapper;
 
   },
