@@ -30,14 +30,13 @@ Module.register("MMM-Android", {
 
 	 var wrapper = document.createElement("div");
 	 
-	 var table = document.createElement("table");
-	 table.border = "0";
-	 table.width = "1000";
-	 table.height = "500";
+	 var mms_table = document.createElement("table");
+	 var kakao_table = document.createElement("table");
+	 var gmail_table = document.createElement("table");
+	 var call_table = document.createElement("table");
 
 	 var mms_package = document.createElement("tr");
 	 var mms_title = document.createElement("td");
-
 	 var mms_text = document.createElement("td");
 	 
 	 var kakao_package = document.createElement("tr");
@@ -53,7 +52,10 @@ Module.register("MMM-Android", {
 	 var call_title = document.createElement("td");
 	 var call_text = document.createElement("td");
 	 
-	 table.className= "table";
+	 mms_table.className= "table";
+	 kakao_table.className = "table";
+	 gmail_table.className = "table";
+	 call_table.className = "table";
 
 	 var strMms = new String(self.mms).split('&');
 	 var strKakao = new String(self.kakao).split('&');
@@ -61,7 +63,7 @@ Module.register("MMM-Android", {
 	 var strCall = new String(self.call).split('&');
 
 	 mms_package.innerHTML = "<i class='far fa-comment-alt'></i>";
-	 mms_title.innerHTML = strMms[1];
+	 mms_title.innerHTML = strMms[1] + " :";
 	 
 	 if(strMms[2] == "undefined")
 		 mms_text.innerHTML = "사진";
@@ -69,7 +71,7 @@ Module.register("MMM-Android", {
 		 mms_text.innerHTML = strMms[2];
 	 
 	 kakao_package.innerHTML = "<i class='fas fa-comment'></i>";
-	 kakao_title.innerHTML = strKakao[1];
+	 kakao_title.innerHTML = strKakao[1] + " :";
 	 
 	 if(strKakao[2] == "undefined") 
 		 kakao_text.innerHTML = "사진"
@@ -77,7 +79,7 @@ Module.register("MMM-Android", {
 		 kakao_text.innerHTML = strKakao[2];
 	
 	 gmail_package.innerHTML = "<i class='far fa-envelope'></i>";
-	 gmail_title.innerHTML = strGmail[1];
+	 gmail_title.innerHTML = strGmail[1] + " :";
 	 
 	 if(strGmail[2] == "undefined") 
 		 gmail_text.innterHTML = "사진";
@@ -85,10 +87,10 @@ Module.register("MMM-Android", {
 		 gmail_text.innterHTML = strGmail[2];
 	 
 	 call_package.innerHTML = "<i class='fas fa-phone'></i>";
- 	 call_title.innerHTML = strCall[1];
-	 
-	 call_text.innerHTML = strCall[2];
 
+	 call_title.innerHTML = strCall[1] + " :";
+	 call_text.innerHTML = strCall[2];
+	 
 	 mms_package.appendChild(mms_title); 
 	 mms_package.appendChild(mms_text);
 
@@ -101,12 +103,15 @@ Module.register("MMM-Android", {
 	 call_package.appendChild(call_title); 
 	 call_package.appendChild(call_text);
 
-	 table.appendChild(mms_package);
-	 table.appendChild(kakao_package);
-	 table.appendChild(gmail_package);
-	 table.appendChild(call_package);
+	 mms_table.appendChild(mms_package);
+	 kakao_table.appendChild(kakao_package);
+	 gmail_table.appendChild(gmail_package);
+	 call_table.appendChild(call_package);
 	
-	 wrapper.appendChild(table);
+	 wrapper.appendChild(mms_table);
+	 wrapper.appendChild(kakao_table);
+	 wrapper.appendChild(gmail_table);
+	 wrapper.appendChild(call_table);
 
 	 return wrapper;
 
