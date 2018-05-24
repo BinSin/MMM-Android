@@ -21,6 +21,10 @@ Module.register("MMM-Android", {
 	return ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", "https://use.fontawesome.com/releases/v5.0.13/css/all.css"];
   },
 
+  getStyles: function(){
+	return [ "MMM-Android.css" ];
+  },
+
   getDom: function() {
  	 var self = this;
 
@@ -33,6 +37,7 @@ Module.register("MMM-Android", {
 
 	 var mms_package = document.createElement("tr");
 	 var mms_title = document.createElement("td");
+
 	 var mms_text = document.createElement("td");
 	 
 	 var kakao_package = document.createElement("tr");
@@ -57,18 +62,31 @@ Module.register("MMM-Android", {
 
 	 mms_package.innerHTML = "<i class='far fa-comment-alt'></i>";
 	 mms_title.innerHTML = strMms[1];
-	 mms_text.innerHTML = strMms[2];
+	 
+	 if(strMms[2] == "undefined")
+		 mms_text.innerHTML = "사진";
+	 else
+		 mms_text.innerHTML = strMms[2];
 	 
 	 kakao_package.innerHTML = "<i class='fas fa-comment'></i>";
 	 kakao_title.innerHTML = strKakao[1];
-	 kakao_text.innerHTML = strKakao[2];
+	 
+	 if(strKakao[2] == "undefined") 
+		 kakao_text.innerHTML = "사진"
+	 else
+		 kakao_text.innerHTML = strKakao[2];
 	
 	 gmail_package.innerHTML = "<i class='far fa-envelope'></i>";
 	 gmail_title.innerHTML = strGmail[1];
-	 gmail_text.innerHTML = strGmail[2];
-	
+	 
+	 if(strGmail[2] == "undefined") 
+		 gmail_text.innterHTML = "사진";
+	 else
+		 gmail_text.innterHTML = strGmail[2];
+	 
 	 call_package.innerHTML = "<i class='fas fa-phone'></i>";
  	 call_title.innerHTML = strCall[1];
+	 
 	 call_text.innerHTML = strCall[2];
 
 	 mms_package.appendChild(mms_title); 
