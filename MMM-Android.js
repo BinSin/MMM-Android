@@ -68,28 +68,28 @@ Module.register("MMM-Android", {
 	 if(strMms[2] == "undefined")
 		 mms_text.innerHTML = "사진";
 	 else
-		 mms_text.innerHTML = strMms[2];
+		 mms_text.innerHTML = new String(strMms[2]).substring(0, 20);
 	 
 	 kakao_package.innerHTML = "<i class='fas fa-comment'></i>";
 	 kakao_title.innerHTML = strKakao[1] + " :";
 	 
 	 if(strKakao[2] == "undefined") 
-		 kakao_text.innerHTML = "사진"
+		 kakao_text.innerHTML = "사진";
 	 else
-		 kakao_text.innerHTML = strKakao[2];
+		 kakao_text.innerHTML = new String(strKakao[2]).substring(0, 20);
 	
 	 gmail_package.innerHTML = "<i class='far fa-envelope'></i>";
 	 gmail_title.innerHTML = strGmail[1] + " :";
 	 
 	 if(strGmail[2] == "undefined") 
-		 gmail_text.innterHTML = "사진";
+		 gmail_text.innerHTML = "사진";
 	 else
-		 gmail_text.innterHTML = strGmail[2];
+		 gmail_text.innerHTML = new String(strGmail[2]).substring(0, 20);
 	 
 	 call_package.innerHTML = "<i class='fas fa-phone'></i>";
 
-	 call_title.innerHTML = strCall[1] + " :";
-	 call_text.innerHTML = strCall[2];
+	 call_title.innerHTML = strCall[2] + " : ";
+	 call_text.innerHTML = strCall[1];
 	 
 	 mms_package.appendChild(mms_title); 
 	 mms_package.appendChild(mms_text);
