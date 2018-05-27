@@ -14,19 +14,14 @@ Module.register("MMM-Android", {
 	 setInterval(function() {
 		self.sendSocketNotification("SEND_ANDROID", self.config.query);
 	 }, 2000);
-
   },
-
-  getScripts: function() {
-	return ["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", "https://use.fontawesome.com/releases/v5.0.13/css/all.css"];
-  },
-
+  
   getStyles: function(){
 	return [ "MMM-Android.css" ];
   },
 
   getDom: function() {
- 	 var self = this;
+	 var self = this;
 
 	 var wrapper = document.createElement("div");
 	 
@@ -36,19 +31,23 @@ Module.register("MMM-Android", {
 	 var call_table = document.createElement("table");
 
 	 var mms_package = document.createElement("tr");
+	 var mms_image = document.createElement("td");
 	 var mms_title = document.createElement("td");
 	 var mms_text = document.createElement("td");
 	 
 	 var kakao_package = document.createElement("tr");
+	 var kakao_image = document.createElement("td");
 	 var kakao_title = document.createElement("td");
 	 var kakao_text = document.createElement("td");
 	 
  
 	 var gmail_package = document.createElement("tr");
+	 var gmail_image = document.createElement("td");
 	 var gmail_title = document.createElement("td");
 	 var gmail_text = document.createElement("td");
 
 	 var call_package = document.createElement("tr");
+	 var call_image = document.createElement("td");
 	 var call_title = document.createElement("td");
 	 var call_text = document.createElement("td");
 	 
@@ -62,7 +61,7 @@ Module.register("MMM-Android", {
 	 var strGmail = new String(self.gmail).split('&');
 	 var strCall = new String(self.call).split('&');
 
-	 mms_package.innerHTML = "<i class='far fa-comment-alt'></i>";
+	 mms_image.innerHTML = "<img src='MMM-Android/mms.png'></img>";
 	 mms_title.innerHTML = strMms[1] + " :";
 	 
 	 if(strMms[2] == "undefined")
@@ -70,7 +69,7 @@ Module.register("MMM-Android", {
 	 else
 		 mms_text.innerHTML = new String(strMms[2]).substring(0, 20);
 	 
-	 kakao_package.innerHTML = "<i class='fas fa-comment'></i>";
+	 kakao_image.innerHTML = "<img src='MMM-Android/kakao.png'></img>";
 	 kakao_title.innerHTML = strKakao[1] + " :";
 	 
 	 if(strKakao[2] == "undefined") 
@@ -78,7 +77,7 @@ Module.register("MMM-Android", {
 	 else
 		 kakao_text.innerHTML = new String(strKakao[2]).substring(0, 20);
 	
-	 gmail_package.innerHTML = "<i class='far fa-envelope'></i>";
+	 gmail_image.innerHTML = "<img src='MMM-Android/gmail.png'></img>";
 	 gmail_title.innerHTML = strGmail[1] + " :";
 	 
 	 if(strGmail[2] == "undefined") 
@@ -86,20 +85,24 @@ Module.register("MMM-Android", {
 	 else
 		 gmail_text.innerHTML = new String(strGmail[2]).substring(0, 20);
 	 
-	 call_package.innerHTML = "<i class='fas fa-phone'></i>";
+	 call_image.innerHTML = "<img src='MMM-Android/call.png'></img>";
 
 	 call_title.innerHTML = strCall[2] + " : ";
 	 call_text.innerHTML = strCall[1];
 	 
+	 mms_package.appendChild(mms_image); 
 	 mms_package.appendChild(mms_title); 
 	 mms_package.appendChild(mms_text);
 
+	 kakao_package.appendChild(kakao_image); 
 	 kakao_package.appendChild(kakao_title); 
 	 kakao_package.appendChild(kakao_text); 
 
+	 gmail_package.appendChild(gmail_image); 
 	 gmail_package.appendChild(gmail_title); 
 	 gmail_package.appendChild(gmail_text); 
 
+	 call_package.appendChild(call_image); 
 	 call_package.appendChild(call_title); 
 	 call_package.appendChild(call_text);
 

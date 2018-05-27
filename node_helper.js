@@ -26,7 +26,7 @@ module.exports = NodeHelper.create({
     if (notification == "SEND_ANDROID") {
 	 var self = this;
 
-	 fs.readFile(path.resolve(global.root_path + payload + "mmsQuery.js"), 'utf8', function(err, data) {
+	 fs.readFile(path.resolve("~/MagicMirror/modules/MMM-Android/public/mmsQuery.js"), 'utf8', function(err, data) {
 		 self.sendSocketNotification("GET_MMS_QUERY", data);
 	 });
 	 fs.readFile(path.resolve(global.root_path + payload + "kakaoQuery.js"), 'utf8', function(err, data) {
